@@ -26,14 +26,14 @@ lr.fit()
 lr.plot_result()
 ```
 
-![学習データに対するプロット](image/image1)
+![学習データに対するプロット](https://user-images.githubusercontent.com/37444351/44082963-c043be52-9fed-11e8-9991-650293235d91.png)
 
 # plot_test_result
 テストデータに対しての予測結果をプロットする. 
 引数に指定された値だけ, テストデータを生成し, 予測する．
 分散値を点線で明記している.
 
-![テストデータに対するプロット](image/image2)
+![テストデータに対するプロット](https://user-images.githubusercontent.com/37444351/44082991-cd18b1fa-9fed-11e8-859a-8f6536d36dc6.png)
 
 ```python
 lr.plot_test_result()
