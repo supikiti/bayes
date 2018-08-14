@@ -59,8 +59,8 @@ class Linear_regrettion:
 
         plt.scatter(sin_x_test, sin_y_test)
         plt.plot(x_range, y_test)
-        plt.plot(x_range, y_sigma_up)
-        plt.plot(x_range, y_sigma_down)
+        plt.plot(x_range, y_sigma_up, linestyle="dashdot", alpha=0.5)
+        plt.plot(x_range, y_sigma_down, linestyle="dashdot", alpha=0.5)
         plt.grid(True)
         plt.show()
         
@@ -91,4 +91,4 @@ if __name__ == "__main__":
     lr = Linear_regrettion(5, 10, 50)
     lr.fit()
     lr.plot_result()
-    lr.plot_test_reslut(50)
+    lr.plot_test_reslut(10)
