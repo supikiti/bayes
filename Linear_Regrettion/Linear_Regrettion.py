@@ -5,10 +5,9 @@ import math
 
 class Linear_regrettion:
     
-    def __init__(self, M, ramda, rand_num):
+    def __init__(self, M, ramda):
         self.M = M
         self.ramda = ramda
-        self.rand_num = rand_num
         self.A = np.eye(M)
         self.m = np.zeros(M)
         
@@ -75,8 +74,9 @@ class Linear_regrettion:
         plt.grid(True)
         plt.show()
     
-    def fit(self, generator=True):
-        self.data_x, self.data_y = self.generate_sin_rand(self.rand_num)
+    def fit(self, data_x, data_y):
+        self.data_x = data_x
+        self.data_y = data_y
         plot_x = self.make_input_x(self.data_x, self.M)
         self.A_ = self.renew_A(plot_x, np.eye(self.M))
         N = len(plot_x)
@@ -88,7 +88,8 @@ class Linear_regrettion:
 
 
 if __name__ == "__main__":
-    lr = Linear_regrettion(5, 10, 50)
-    lr.fit()
+    lr = Linear_regrettion(5, 10)
+    data_x, data_y = lr.generate_sin_rand(50)
+    lr.fit(data_x, data_y)
     lr.plot_result()
     lr.plot_test_reslut(10)
