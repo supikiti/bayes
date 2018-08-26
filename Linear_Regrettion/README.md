@@ -41,4 +41,4 @@ lr.plot_test_result()
 
 # plot_all_result
 Mを適宜変えた場合の様子をプロットする.
-![M=1,2,3,4,5,10に対する結果]()
+![M=1,2,3,4,5,10に対する結果](https://github.com/supikiti/bayes/issues/1#issuecomment-416043203)
