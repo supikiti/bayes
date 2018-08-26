@@ -38,3 +38,7 @@ lr.plot_result()
 ```python
 lr.plot_test_result()
 ```
+
+# plot_all_result
+Mを適宜変えた場合の様子をプロットする.
+![M=1,2,3,4,5,10に対する結果]()
