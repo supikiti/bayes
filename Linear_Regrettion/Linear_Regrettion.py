@@ -40,10 +40,9 @@ class Linear_regrettion:
         return xn_
     
         
-    def plot_test_reslut(self, test_sample_num=10):
+    def plot_test_result(self, test_x, test_y):
         x_range = np.arange(0, 3.14 * 3, 0.1)
         plot_x_ = self.make_input_x(x_range, self.M)
-        sin_x_test, sin_y_test = self.generate_sin_rand(test_sample_num)
 
         y_test = []
         y_sigma_up = []
@@ -56,12 +55,12 @@ class Linear_regrettion:
             y_sigma_up.append(mu_ + math.sqrt(sigma_))
             y_sigma_down.append(mu_ - math.sqrt(sigma_))
 
-        plt.scatter(sin_x_test, sin_y_test)
+        plt.scatter(test_x, test_y)
         plt.plot(x_range, y_test)
-        plt.plot(x_range, y_sigma_up, linestyle="dashdot", alpha=0.5)
-        plt.plot(x_range, y_sigma_down, linestyle="dashdot", alpha=0.5)
+        plt.plot(x_range, y_sigma_up, linestyle="dashdot", c="c", alpha=0.5)
+        plt.plot(x_range, y_sigma_down, linestyle="dashdot", c="c", alpha=0.5)
         plt.grid(True)
-        plt.show()
+        
         
     def plot_result(self):
         x_range = np.arange(0, 3.14 * 3, 0.1)
@@ -72,7 +71,6 @@ class Linear_regrettion:
         plt.plot(x_range, self.y)
         plt.scatter(self.data_x, self.data_y)
         plt.grid(True)
-        plt.show()
     
     def fit(self, data_x, data_y):
         self.data_x = data_x
@@ -86,10 +84,20 @@ class Linear_regrettion:
         self.m_ = np.dot(np.linalg.inv(self.A_), tmp)
         self.p_w = np.random.multivariate_normal(self.m_, np.linalg.inv(self.A_))
 
+def plot_all_result():
+    l = Linear_regrettion(1, 10)
+    data_x, data_y = l.generate_sin_rand(50)
+    test_x, test_y = l.generate_sin_rand(10)
+    M_list = [1, 2, 3, 4, 5, 10]
+    for i, m in enumerate(M_list):
+        lr = Linear_regrettion(m, 10)
+        lr.fit(data_x, data_y)
+        plt.subplot(2, 3, i+1)
+        lr.plot_test_result(test_x, test_y)
+        plt.ylim([-4, 4])
+        plt.text(0.1, 3, "M = {}".format(m))
+    plt.show()   
+
 
 if __name__ == "__main__":
-    lr = Linear_regrettion(5, 10)
-    data_x, data_y = lr.generate_sin_rand(50)
-    lr.fit(data_x, data_y)
-    lr.plot_result()
-    lr.plot_test_reslut(10)
+    plot_all_result()
