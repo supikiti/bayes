@@ -16,7 +16,7 @@ lr = Linear_Regrettion(M, ramda, rand_num)
 コンストラクタで与えられたデータから学習し, パラメータの事後分布を生成する. 引数としてdata_x, data_y を渡すことで, モデルを学習させることができる. 
 
 ```python
-lr.fit()
+lr.fit(data_x. data_y)
 ```
 
 # plot_result
